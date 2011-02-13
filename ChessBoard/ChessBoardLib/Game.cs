@@ -26,5 +26,21 @@ namespace ChessBoardLib
         {
             return "Illegal move";
         }
+
+        public void addKnightAtG8()
+        {
+        }
+
+        public void addPawnAtA1()
+        {
+        }
+
+        public void movePawnToA2()
+        {
+        }
+
+        public void moveKnightToI7()
+        {
+        }
     }
 }
