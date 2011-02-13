@@ -7,17 +7,17 @@ namespace ChessBoardLib
 {
     public class Game
     {
-        public void addPawnAtA8()
+        public void addPawn(string pos)
         {
             // don't do anything yet...
         }
 
-        public void movePawnToA9()
+        public void movePawnTo(string pos)
         {
             // nada
         }
 
-        public void addKnightAtA1()
+        public void addKnight(string pos)
         {
             // do nothing yet
         }
@@ -25,18 +25,6 @@ namespace ChessBoardLib
         public string response()
         {
             return "Illegal move";
-        }
-
-        public void addKnightAtG8()
-        {
-        }
-
-        public void addPawnAtA1()
-        {
-        }
-
-        public void movePawnToA2()
-        {
         }
 
         public void moveKnightToI7()

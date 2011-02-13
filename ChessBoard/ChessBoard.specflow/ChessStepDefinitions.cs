@@ -17,40 +17,23 @@ namespace ChessBoard.specflow
             myGame = new ChessBoardLib.Game();
         }
 
-        [Given(@"I have a White Pawn at A8")]
-        public void GivenIHaveAWhitePawnAtA8()
+        [Given(@"I have a White [Pp]awn at (..)")]
+        public void GivenIHaveAWhitePawnAt(string pos)
         {
-            myGame.addPawnAtA8();
+            myGame.addPawn(pos);
         }
 
-        [Given(@"I have a White pawn at A1")]
-        public void GivenIHaveAWhitePawnAtA1()
+        [Given(@"I have a Black [Kk]night at (..)")]
+        public void GivenIHaveABlackKnightAt(string pos)
         {
-            myGame.addPawnAtA1();
+            myGame.addKnight(pos);
         }
 
-        [Given(@"I have a Black Knight at A1")]
-        public void GivenIHaveABlackKnightAtA1()
+        [When(@"I move the Pawn to (..)")]
+        [Given(@"I move the Pawn to (..)")]
+        public void MoveThePawnTo(string pos)
         {
-            myGame.addKnightAtA1();
-        }
-
-        [Given(@"I have a Black knight at G8")]
-        public void GivenIHaveABlackKnightAtG8()
-        {
-            myGame.addKnightAtG8();
-        }
-
-        [When(@"I move the Pawn to A9")]
-        public void WhenIMoveThePawnToA9()
-        {
-            myGame.movePawnToA9();
-        }
-
-        [Given(@"I move the Pawn to A2")]
-        public void GivenIMoveThePawnToA2()
-        {
-            myGame.movePawnToA2();
+            myGame.movePawnTo(pos);
         }
 
         [When(@"I move the Knight to I7")]
