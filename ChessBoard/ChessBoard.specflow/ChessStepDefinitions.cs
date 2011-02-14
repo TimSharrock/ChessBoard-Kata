@@ -43,6 +43,12 @@ namespace ChessBoard.specflow
             myGame.addKnight(pos);
         }
 
+        [Given(@"the valid moves are")]
+        public void GivenTheValidMovesAre(Table table)
+        {
+            // ignore them
+        }
+
         [When(@"I move the Pawn to (..)")]
         [Given(@"I move the Pawn to (..)")]
         public void MoveThePawnTo(string pos)
@@ -50,10 +56,10 @@ namespace ChessBoard.specflow
             myGame.movePawnTo(pos);
         }
 
-        [When(@"I move the Knight to I7")]
-        public void WhenIMoveTheKnightToI7()
+        [When(@"I move the Knight to (..)")]
+        public void WhenIMoveTheKnightTo(string pos)
         {
-            myGame.moveKnightToI7();
+            myGame.moveKnightTo(pos);
         }
 
         [Then(@"Pawn should be at (..)")]
@@ -71,7 +77,7 @@ namespace ChessBoard.specflow
         [Then(@"I should be warned of an illegal move message")]
         public void ThenIShouldBeWarnedOfAnIllegalMoveMessage()
         {
-            Assert.AreEqual("illegal move", myGame.response());
+            Assert.AreEqual("illegal move", myGame.response(),true);
         }
 
 

@@ -9,6 +9,7 @@ namespace ChessBoardLib
     public class Game
     {
         private string myPawnPos;
+        private string myKnightPos;
         private string myStatus;
         private bool myMessagesAreDumbedDown;
         private int myMoveNumber;
@@ -19,9 +20,13 @@ namespace ChessBoardLib
             myMoveNumber = 0;
         }
 
-        private string illegalMoveMessage()
+        private string illegalPawnMoveMessage()
         {
             return "illegal move";
+        }
+        private string illegalKnightMoveMessage()
+        {
+            return "Illegal Move";
         }
         private string badDiagonalMessage()
         {
@@ -41,8 +46,8 @@ namespace ChessBoardLib
         {
             if (!illegalPosition(pos))
             {
-                if ((Math.Abs(columnShift(pos)) == 1) &&
-                    ((rowShift(pos)) == 1) &&
+                if ((Math.Abs(pawnColumnShift(pos)) == 1) &&
+                    ((pawnRowShift(pos)) == 1) &&
                     (!myMessagesAreDumbedDown))
                 {
                     myStatus = badDiagonalMessage();
@@ -65,7 +70,7 @@ namespace ChessBoardLib
             }
 
             // illegal move - some have special messages
-            myStatus = illegalMoveMessage();
+            myStatus = illegalPawnMoveMessage();
             if (!myMessagesAreDumbedDown)
             {
                 if (moveIsDoubleStep(pos))
@@ -82,15 +87,15 @@ namespace ChessBoardLib
 
         private bool moveIsDiagonalStepForward(string pos)
         {
-            if (Math.Abs(columnShift(pos)) != 1) { return false; }
-            if (rowShift(pos) != 1) { return false; }
+            if (Math.Abs(pawnColumnShift(pos)) != 1) { return false; }
+            if (pawnRowShift(pos) != 1) { return false; }
             return true;
         }
 
         private bool moveIsDoubleStep(string pos)
         {
-            if (columnShift(pos) != 0) { return false; }
-            if (rowShift(pos) != 2) { return false; }
+            if (pawnColumnShift(pos) != 0) { return false; }
+            if (pawnRowShift(pos) != 2) { return false; }
             return true;
         }
 
@@ -102,14 +107,15 @@ namespace ChessBoardLib
 
         private bool moveisOneStepForward(string pos)
         {
-            if (columnShift(pos) != 0) { return false; }
-            if (rowShift(pos) != 1) { return false; }
+            if (pawnColumnShift(pos) != 0) { return false; }
+            if (pawnRowShift(pos) != 1) { return false; }
             return true;
         }
 
         private bool illegalPosition(string pos)
         {
             if (row(pos) > 8) { return true; }
+            if (col(pos) > 8) { return true; }
             return false;
         }
 
@@ -122,19 +128,39 @@ namespace ChessBoardLib
             return pos[0] - '@';
         }
 
-        private int rowShift(string pos)
+        private int rowShift(string pos,string oldPos)
         {
-            return row(pos) - row(myPawnPos);
+            return row(pos) - row(oldPos);
         }
 
-        private int columnShift(string pos)
+        private int columnShift(string pos,string oldPos)
         {
-            return col(pos) - col(myPawnPos);
+            return col(pos) - col(oldPos);
+        }
+
+        private int pawnRowShift(string pos)
+        {
+            return rowShift(pos, myPawnPos);
+        }
+
+        private int pawnColumnShift(string pos)
+        {
+            return columnShift(pos, myPawnPos);
+        }
+
+        private int knightRowShift(string pos)
+        {
+            return rowShift(pos, myKnightPos);
+        }
+
+        private int knightColumnShift(string pos)
+        {
+            return columnShift(pos, myKnightPos);
         }
 
         public void addKnight(string pos)
         {
-            // do nothing yet
+            myKnightPos = pos;
         }
 
         public string response()
@@ -142,9 +168,20 @@ namespace ChessBoardLib
             return myStatus;
         }
 
-        public void moveKnightToI7()
+        public void moveKnightTo(string pos)
         {
-            myStatus = illegalMoveMessage();
+            if (!illegalPosition(pos))
+            {
+                if (((Math.Abs(knightColumnShift(pos)) == 1) && (Math.Abs(knightRowShift(pos)) == 2)) ||
+                    ((Math.Abs(knightColumnShift(pos)) == 2) && (Math.Abs(knightRowShift(pos)) == 1)))
+                {
+                    myStatus = "Knight to " + pos;
+                    // needed but not specced: myKnightPos = pos;
+                    return;
+                }
+            }
+
+            myStatus = illegalKnightMoveMessage();
         }
 
         public void dumbDownMessages()

@@ -53,6 +53,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChessBoard.feature</DependentUpon>
     </Compile>
+    <Compile Include="MovingTheKnight.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MovingTheKnight.feature</DependentUpon>
+    </Compile>
     <Compile Include="PawnMovesLegally.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +71,10 @@
     <None Include="ChessBoard.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChessBoard.feature.cs</LastGenOutput>
+    </None>
+    <None Include="MovingTheKnight.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MovingTheKnight.feature.cs</LastGenOutput>
     </None>
     <None Include="PawnMovesLegally.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
