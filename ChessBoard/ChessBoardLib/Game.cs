@@ -46,13 +46,19 @@ namespace ChessBoardLib
         {
             if (!illegalPosition(pos))
             {
-                if ((Math.Abs(pawnColumnShift(pos)) == 1) &&
-                    ((pawnRowShift(pos)) == 1) &&
-                    (!myMessagesAreDumbedDown))
+                if(pos==myKnightPos)
                 {
-                    myStatus = badDiagonalMessage();
-                    return;
+                    if(moveIsDiagonalStepForward(pos))
+                    {
+                        myKnightPos="";
+                        myStatus = "Pawn takes Knight. Pawn wins";
+                        myPawnPos = pos;
+                        ++myMoveNumber;
+                        return;
+                    }
                 }
+                else
+                {
 
                 if (moveisOneStepForward(pos) ||
                     moveIsInitialDoubleStep(pos))
@@ -65,6 +71,7 @@ namespace ChessBoardLib
                         ++myMoveNumber;
                         return;
                     }
+                }
                 }
 
             }
@@ -80,6 +87,11 @@ namespace ChessBoardLib
                 if (moveIsDiagonalStepForward(pos))
                 {
                     myStatus = badDiagonalMessage();
+                }
+                if (pos == myKnightPos)
+                {
+                    // hmm what about a double-step when a single would be be possible?
+                    myStatus = "Pawn collides with Knight. Draw";
                 }
             }
             return;
@@ -176,6 +188,12 @@ namespace ChessBoardLib
                     ((Math.Abs(knightColumnShift(pos)) == 2) && (Math.Abs(knightRowShift(pos)) == 1)))
                 {
                     myStatus = "Knight to " + pos;
+                    if (pos == myPawnPos)
+                    {
+                        myPawnPos = "";
+                        myStatus = "Knight takes Pawn. Knight Wins";
+                    }
+
                     // needed but not specced: myKnightPos = pos;
                     return;
                 }
@@ -197,6 +215,11 @@ namespace ChessBoardLib
         public void setMoveNumber(int n)
         {
             myMoveNumber=n;
+        }
+
+        public string knightPosition()
+        {
+            return myKnightPos;
         }
     }
 }
