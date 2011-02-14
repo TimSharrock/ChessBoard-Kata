@@ -53,6 +53,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChessBoard.feature</DependentUpon>
     </Compile>
+    <Compile Include="PawnMovesLegally.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PawnMovesLegally.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ChessStepDefinitions.cs" />
   </ItemGroup>
@@ -61,6 +66,10 @@
     <None Include="ChessBoard.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChessBoard.feature.cs</LastGenOutput>
+    </None>
+    <None Include="PawnMovesLegally.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PawnMovesLegally.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
