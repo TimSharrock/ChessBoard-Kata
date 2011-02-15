@@ -11,12 +11,10 @@ namespace ChessBoardLib
         private string myPawnPos;
         private string myKnightPos;
         private string myStatus;
-        private bool myMessagesAreDumbedDown;
         private int myMoveNumber;
 
         public Game()
         {
-            myMessagesAreDumbedDown = false;
             myMoveNumber = 0;
         }
 
@@ -30,11 +28,11 @@ namespace ChessBoardLib
         }
         private string badDiagonalMessage()
         {
-            return "Pawn cannot diagonally unless it is capturing a piece.";
+            return illegalPawnMoveMessage() + ". Pawn cannot diagonally unless it is capturing a piece.";
         }
         private string badDoubleMoveMessage()
         {
-            return "Pawn cannot move 2 spaces unless it in the first round and is on the home row.";
+            return illegalPawnMoveMessage() + ". Pawn cannot move 2 spaces unless it in the first round and is on the home row.";
         }
 
         public void addPawn(string pos)
@@ -46,11 +44,11 @@ namespace ChessBoardLib
         {
             if (!illegalPosition(pos))
             {
-                if(pos==myKnightPos)
+                if (pos == myKnightPos)
                 {
-                    if(moveIsDiagonalStepForward(pos))
+                    if (moveIsDiagonalStepForward(pos))
                     {
-                        myKnightPos="";
+                        myKnightPos = "";
                         myStatus = "Pawn takes Knight. Pawn wins";
                         myPawnPos = pos;
                         ++myMoveNumber;
@@ -60,11 +58,8 @@ namespace ChessBoardLib
                 else
                 {
 
-                if (moveisOneStepForward(pos) ||
-                    moveIsInitialDoubleStep(pos))
-                {
-                    //nasty fudge for bad spec - this test is not "really" needed
-                    if ((pos != "D8") || (!myMessagesAreDumbedDown))
+                    if (moveisOneStepForward(pos) ||
+                        moveIsInitialDoubleStep(pos))
                     {
                         myStatus = "Pawn to " + pos;
                         myPawnPos = pos;
@@ -72,27 +67,22 @@ namespace ChessBoardLib
                         return;
                     }
                 }
-                }
 
             }
 
             // illegal move - some have special messages
             myStatus = illegalPawnMoveMessage();
-            if (!myMessagesAreDumbedDown)
+            if (moveIsDoubleStep(pos))
             {
-                if (moveIsDoubleStep(pos))
-                {
-                    myStatus = badDoubleMoveMessage();
-                }
-                if (moveIsDiagonalStepForward(pos))
-                {
-                    myStatus = badDiagonalMessage();
-                }
-                if (pos == myKnightPos)
-                {
-                    // hmm what about a double-step when a single would be be possible?
-                    myStatus = "Pawn collides with Knight. Draw";
-                }
+                myStatus = badDoubleMoveMessage();
+            }
+            if (moveIsDiagonalStepForward(pos))
+            {
+                myStatus = badDiagonalMessage();
+            }
+            if (moveisOneStepForward(pos) && (pos == myKnightPos))
+            {
+                myStatus = "Pawn collides with Knight. Draw";
             }
             return;
         }
@@ -113,7 +103,7 @@ namespace ChessBoardLib
 
         private bool moveIsInitialDoubleStep(string pos)
         {
-            if (myMoveNumber >1) { return false; }
+            if (myMoveNumber > 1) { return false; }
             return moveIsDoubleStep(pos);
         }
 
@@ -140,12 +130,12 @@ namespace ChessBoardLib
             return pos[0] - '@';
         }
 
-        private int rowShift(string pos,string oldPos)
+        private int rowShift(string pos, string oldPos)
         {
             return row(pos) - row(oldPos);
         }
 
-        private int columnShift(string pos,string oldPos)
+        private int columnShift(string pos, string oldPos)
         {
             return col(pos) - col(oldPos);
         }
@@ -204,7 +194,7 @@ namespace ChessBoardLib
 
         public void dumbDownMessages()
         {
-            myMessagesAreDumbedDown=true; 
+            // myMessagesAreDumbedDown=true; 
         }
 
         public string pawnPosition()
@@ -214,7 +204,7 @@ namespace ChessBoardLib
 
         public void setMoveNumber(int n)
         {
-            myMoveNumber=n;
+            myMoveNumber = n;
         }
 
         public string knightPosition()

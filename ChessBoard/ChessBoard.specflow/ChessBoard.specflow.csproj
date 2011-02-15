@@ -70,6 +70,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TakingAPiece.feature</DependentUpon>
     </Compile>
+    <Compile Include="tjsMissing.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tjsMissing.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -88,6 +93,10 @@
     <None Include="TakingAPiece.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>TakingAPiece.feature.cs</LastGenOutput>
+    </None>
+    <None Include="tjsMissing.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>tjsMissing.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -80,7 +80,8 @@ namespace ChessBoard.specflow
         [Then(@"I should be shown ""(.*)""")]
         public void ThenIShouldBeShownMessage(string message)
         {
-            Assert.AreEqual(message, myGame.response());
+            string response = myGame.response();
+            Assert.IsTrue(response.Contains(message),"\""+message+"\" not found in \""+response+"\"");
         }
 
         [Then(@"I should be warned of an illegal move message")]
@@ -104,7 +105,7 @@ namespace ChessBoard.specflow
         [Given(@"the valid moves are (..)")]
         public void GivenTheValidMovesAre(string pos)
         {
-            myGame.dumbDownMessages();
+            // ignore
         }
     }
 }
