@@ -111,7 +111,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 29
 testRunner.Given("I have a White Pawn at D7");
 #line 30
-testRunner.And("I have a Black knight at G8");
+testRunner.And("I have a Black Knight at G8");
 #line 31
 testRunner.When("I move the Pawn to C8");
 #line 32
@@ -130,7 +130,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 36
 testRunner.Given("I have a White Pawn at D7");
 #line 37
-testRunner.And("I have a Black knight at G8");
+testRunner.And("I have a Black Knight at G8");
 #line 38
 testRunner.And("the valid moves are D8");
 #line 39
@@ -389,14 +389,6 @@ testRunner.And("Pawn should be at D7");
         public virtual void PawnMovesIllegally_Positions_D7()
         {
             this.PawnMovesIllegally("D7");
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Pawn moves illegally")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving the Pawn.")]
-        public virtual void PawnMovesIllegally_Positions_D8()
-        {
-            this.PawnMovesIllegally("D8");
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]

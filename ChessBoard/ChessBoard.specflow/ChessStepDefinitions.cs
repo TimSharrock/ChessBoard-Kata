@@ -49,10 +49,10 @@ namespace ChessBoard.specflow
             // ignore them
         }
 
-        [When(@"I move the Pawn to (..)")]
-        [Given(@"I move the Pawn to (..)")]
-        [When(@"the pawn moves to (..)")]
-        [Given(@"the Pawn moves to (..)")]
+        [When(@"I move the [Pp]awn to (..)")]
+        [Given(@"I move the [Pp]awn to (..)")]
+        [When(@"the [Pp]awn moves to (..)")]
+        [Given(@"the [Pp]awn moves to (..)")]
         public void MoveThePawnTo(string pos)
         {
             myGame.movePawnTo(pos);
@@ -64,14 +64,14 @@ namespace ChessBoard.specflow
             myGame.moveKnightTo(pos);
         }
 
-        [Then(@"Pawn should be at (..)")]
-        [Then(@"the pawn should be at (..)")]
+        [Then(@"[Pp]awn should be at (..)")]
+        [Then(@"the [Pp]awn should be at (..)")]
         public void ThenPawnShouldBeAt(string pos)
         {
             Assert.AreEqual(pos, myGame.pawnPosition());
         }
 
-        [Then(@"the knight should be at (..)")]
+        [Then(@"the [Kk]night should be at (..)")]
         public void ThenTheKnightShouldBeAt(string pos)
         {
             Assert.AreEqual(pos, myGame.knightPosition());
@@ -90,13 +90,13 @@ namespace ChessBoard.specflow
             Assert.AreEqual("illegal move", myGame.response(), true);
         }
 
-        [Then(@"the pawn should be taken")]
+        [Then(@"the [Pp]awn should be taken")]
         public void ThenThePawnShouldBeTaken()
         {
             Assert.AreEqual("", myGame.pawnPosition(), true);
         }
 
-        [Then(@"the knight should be taken")]
+        [Then(@"the [Kk]night should be taken")]
         public void ThenTheKnightShouldBeTaken()
         {
            Assert.AreEqual("", myGame.knightPosition(), true);

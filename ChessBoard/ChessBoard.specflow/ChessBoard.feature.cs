@@ -81,9 +81,9 @@ testRunner.Then("I should be warned of an illegal move message");
 #line 12
 this.ScenarioSetup(scenarioInfo);
 #line 13
-testRunner.Given("I have a Black knight at G8");
+testRunner.Given("I have a Black Knight at G8");
 #line 14
-testRunner.And("I have a White pawn at A1");
+testRunner.And("I have a White Pawn at A1");
 #line 15
 testRunner.And("I move the Pawn to A2");
 #line 16

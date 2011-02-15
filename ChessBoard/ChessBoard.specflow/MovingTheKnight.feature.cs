@@ -60,9 +60,9 @@ namespace ChessBoard.specflow
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
-testRunner.Given("I have a Black knight at D4");
+testRunner.Given("I have a Black Knight at D4");
 #line 8
-testRunner.And("I have a White pawn at A1");
+testRunner.And("I have a White Pawn at A1");
 #line 9
 testRunner.And("I move the Pawn to A2");
 #line 10
@@ -79,7 +79,7 @@ testRunner.Then("I should be shown \"Knight to F5\"");
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
-testRunner.Given("I have a Black knight at D4");
+testRunner.Given("I have a Black Knight at D4");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "move"});
@@ -102,7 +102,7 @@ testRunner.Given("I have a Black knight at D4");
 #line 16
 testRunner.And("the valid moves are", ((string)(null)), table1);
 #line 26
-testRunner.And("I have a White pawn at A1");
+testRunner.And("I have a White Pawn at A1");
 #line 27
 testRunner.And("I move the Pawn to A2");
 #line 28

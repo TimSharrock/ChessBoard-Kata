@@ -63,13 +63,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
 testRunner.Given("I have a White Pawn at D3");
 #line 8
-testRunner.And("I have a Black knight at C4");
+testRunner.And("I have a Black Knight at C4");
 #line 9
-testRunner.When("the pawn moves to C4");
+testRunner.When("the Pawn moves to C4");
 #line 10
-testRunner.Then("the knight should be taken");
+testRunner.Then("the Knight should be taken");
 #line 11
-testRunner.And("the pawn should be at C4");
+testRunner.And("the Pawn should be at C4");
 #line 12
 testRunner.And("I should be shown \"Pawn takes Knight. Pawn wins\"");
 #line hidden
@@ -87,13 +87,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 15
 testRunner.Given("I have a White Pawn at C3");
 #line 16
-testRunner.And("I have a Black knight at C4");
+testRunner.And("I have a Black Knight at C4");
 #line 17
-testRunner.When("the pawn moves to C4");
+testRunner.When("the Pawn moves to C4");
 #line 18
-testRunner.Then("the knight should be at C4");
+testRunner.Then("the Knight should be at C4");
 #line 19
-testRunner.And("the pawn should be at C3");
+testRunner.And("the Pawn should be at C3");
 #line 20
 testRunner.And("I should be shown \"Pawn collides with Knight. Draw\"");
 #line hidden
@@ -109,7 +109,7 @@ testRunner.And("I should be shown \"Pawn collides with Knight. Draw\"");
 #line 22
 this.ScenarioSetup(scenarioInfo);
 #line 23
-testRunner.Given("I have a Black knight at D6");
+testRunner.Given("I have a Black Knight at D6");
 #line 24
 testRunner.And("I have a White Pawn at F6");
 #line 25
@@ -117,7 +117,7 @@ testRunner.And("the Pawn moves to F7");
 #line 26
 testRunner.When("I move the Knight to F7");
 #line 27
-testRunner.Then("the pawn should be taken");
+testRunner.Then("the Pawn should be taken");
 #line 28
 testRunner.And("I should be shown \"Knight takes Pawn. Knight Wins\"");
 #line hidden
